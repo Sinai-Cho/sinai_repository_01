@@ -86,7 +86,9 @@ For github &amp; codyssey connecting
   * 결과 : b60157574a96c77404dec2760cfa6302f0222ca864028d904572d9d92a3f0a53(
   * -d는 뒤에서 작업하겠다는 의미, -p는 포트 매핑(맥북의 8080포트와 dockerfile에서 설정한 80포트를 연결), --name은 컨테이너 이름, -v는 src 디렉토리 내의 파일과 바인드마운팅 한다는 의미, task01_server 는 docker가 생성한 이미지 이름
 - 포트매핑 확인 : http://localhost:8080/ 접속 (https://github.com/Sinai-Cho/sinai_repository_01/issues/4#issue-5036490610)
-- 바인드마운트 확인 : 
+- 바인드마운트 확인 위해 index.html 파일 내용 변경 : echo '<h1>Goodbye World</h1>' >src/index.html 
+- 파일 변경 내용 확인 : cat src/index.html
+- 변경 내용 적용 확인 : http://localhost:8080/ 새로 고침 (https://github.com/Sinai-Cho/sinai_repository_01/issues/5#issue-5036520878)
 ### 5) 볼륨 작업
 
 ##3. Github 연동
