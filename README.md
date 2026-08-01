@@ -84,10 +84,8 @@ For github &amp; codyssey connecting
 - docker 포트 매핑 및 바인드 마운트 작업 :\
   docker run -d -p 8080:80 --name con_number01 -v $(pwd)/src:/usr/share/nginx/html task01_server
   * 결과 : b60157574a96c77404dec2760cfa6302f0222ca864028d904572d9d92a3f0a53(
-  (https://github.com/Sinai-Cho/sinai_repository_01/issues/4#issue-5036490610)
   * -d는 뒤에서 작업하겠다는 의미, -p는 포트 매핑(맥북의 8080포트와 dockerfile에서 설정한 80포트를 연결), --name은 컨테이너 이름, -v는 src 디렉토리 내의 파일과 바인드마운팅 한다는 의미, task01_server 는 docker가 생성한 이미지 이름
-- 포트매핑 확인 : http://localhost:8080/ 접속\ 
-  (포트 매핑 화면 이미지 하단의 이미지처럼 index.html 파일이 화면에 보여진다)
+- 포트매핑 확인 : http://localhost:8080/ 접속 (https://github.com/Sinai-Cho/sinai_repository_01/issues/4#issue-5036490610)
 - 바인드마운트 확인 : 
 ### 5) 볼륨 작업
 
