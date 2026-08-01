@@ -9,9 +9,24 @@ For github &amp; codyssey connecting
   
 ## 2. 수행 항목 체크리스트
 - 하위 작업 중 문제가 발생했던 기록 포함 정리
+- 6. 현재 위치 확인, 목록 확인, 이동, 생성, 복사, 이동/이름 변경, 삭제, 파일 내용 확인, 빈 파일 생성
+7. 권한 확인/변경하는 명령 수행 결과(변경 전 후 비교)
+8. 파일 1개, 디레ㅔㄱ토리 1개에 대한 권한 변경 실험 수행 기록 남길것
 ### 1) 터미널로 작업 디렉토리와 권한 정리
 - 작업용 디렉토리 생성 : mkdir ~/task01_webserver
 - 생상한 디렉토리로 이동 : cd ~/task01_webserver
+- 테스트용 빈 파일 생성 : touch test01.txt
+- 파일 내용 확인 : cat test01.txt
+- 파일 복사 : cp test01.txt test02.txt
+- 파일 이동 : mv test02.txt src/
+- 파일 이름 변경 : mv test02.txt test03.txt
+- 현재 위치 확인 : pwd
+- 디렉토리 내에서 목록 확인 : ls src/
+- 파일 권한 확인 : ls -l testo3.txt
+  * 결과 : -rw-r--r--  1 sinai4867038  sinai4867038  0  8  1 19:31 testo3.txt
+- 파일 권한 변경 : chmod 755 testo3.txt
+  * 결과 : -rwxr-xr-x  1 sinai4867038  sinai4867038  0  8  1 19:31 testo3.txt
+- 파일 삭제 : rm testo3.txt
 - 디렉토리 권한 정리 : chmod 755 ~/task01_webserver 
   (755 : 소유자는 모든 권한, 다른 사람은 읽기/실행만 가능)
 - 디렉토리의 권한 확인 : ls -ld ~/task01_webserver 
@@ -26,6 +41,8 @@ For github &amp; codyssey connecting
   64 → 디렉토리 크기(바이트 단위)
   8  1 15:06 → 마지막 수정 시간 (8월 1일 17시 06분)
   /Users/sinai4867038/task01_webserver → 디렉토리 경로
+- 디렉토리 권한 수정 : chmod 700 ~/task01_webserver (원래 권한은 755)
+- 디렉토리 권한 수정 결과 : drwx------  4 sinai4867038  sinai4867038  128  8  1 19:38 .
 ### 2) docker 설치, 점검 및 컨테이너 실행/관리
 - docker 설치 : brew install --cask docker
 - 권한 문제로 설치 실패(https://github.com/Sinai-Cho/sinai_repository_01/issues/1#issue-5036160924)
@@ -108,9 +125,7 @@ For github &amp; codyssey connecting
 - hello world 실행 성공 기록
 - 우분투 컨테이너 실행, 내부 진입 후 간단 명령(ls 수행 결과 기록)
 - 컨테이너 종료/유지(attach/exec 의 차이) 관찰해서 정리
-1. 포트 매핑 접속 성공 증거(스크린샷 혹은 로그) - p 8080:80 으로 실행 후 브라우저 접속 화면(주소창 포함)을 기술문서에 첨부할 것
-2. 바인드 마운트 반영 & 볼륨 영속성 증거
-- 바인드마운트 실행명령과 호스트 변경 전 후 비교
+
 - docker 볼륨 생성하고 컨테이너에 연결
 - 컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
 - 생성/연결/검증 명령+출력 결과를 기록한다.
