@@ -30,7 +30,7 @@ For github &amp; codyssey connecting
 - docker 설치 : brew install --cask docker
 - 권한 문제로 설치 실패(https://github.com/Sinai-Cho/sinai_repository_01/issues/1#issue-5036160924)
 - 해결 방법 : 맥북 내 Orbstatk 앱 활성화 후 터미널에서 docker version 명령어를 사용해 사용가능한 상태 및 버전 확인 완료
-## 3) Dockerfile 작업
+### 3) Dockerfile 작업
 - 현재 디렉토리 안에 하위 디렉토리 생성 : mkdir src
 - 웹서버용 파일 생성 : echo "<h1>Hello Wolrd</h1>" > src/index.html
 - Dockerfile 만들기
@@ -48,8 +48,16 @@ echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 
           COPY src/index.html /usr/share/nginx/html/index.html
     
           EXPOSE 80
-## 4) 포트 매핑
-## 5) 바인드 마운트 및 볼륨 작업
+### 4) 포트 매핑 및 바인드 마운트 작업
+- docker build : docker build -t task01_server .
+- docker 포트 매핑 및 바인드 마운트 작업 :
+  docker run -d \
+  -p 8080:80 \
+  --name con_number01 \   
+  -v $(pwd)/src:/usr/share/nginx/html \
+  task01_server
+  * 결과 : b60157574a96c77404dec2760cfa6302f0222ca864028d904572d9d92a3f0a53(https://github.com/Sinai-Cho/sinai_repository_01/issues/3#issue-5036423712)
+### 5) 볼륨 작업
 
 ##3. Github 연동
 
