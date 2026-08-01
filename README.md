@@ -12,7 +12,8 @@ For github &amp; codyssey connecting
 - 6. 현재 위치 확인, 목록 확인, 이동, 생성, 복사, 이동/이름 변경, 삭제, 파일 내용 확인, 빈 파일 생성
 7. 권한 확인/변경하는 명령 수행 결과(변경 전 후 비교)
 8. 파일 1개, 디레ㅔㄱ토리 1개에 대한 권한 변경 실험 수행 기록 남길것
-### 1) 터미널로 작업 디렉토리와 권한 정리
+### 1) 터미널로 작업 디렉토리와 권한 정리 
+(https://github.com/Sinai-Cho/sinai_repository_01/issues/6#issue-5036660240)
 - 작업용 디렉토리 생성 : mkdir ~/task01_webserver
 - 생상한 디렉토리로 이동 : cd ~/task01_webserver
 - 테스트용 빈 파일 생성 : touch test01.txt
