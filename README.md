@@ -27,12 +27,20 @@ For github &amp; codyssey connecting
   8  1 15:06 → 마지막 수정 시간 (8월 1일 17시 06분)
   /Users/sinai4867038/task01_webserver → 디렉토리 경로
 ### 2) docker 설치, 점검 및 컨테이너 실행/관리
-- docker 설치 : brew install docker
+- docker 설치 : brew install --cask docker
 - 권한 문제로 설치 실패(https://github.com/Sinai-Cho/sinai_repository_01/issues/1#issue-5036160924)
 - 해결 방법 : 맥북 내 Orbstatk 앱 활성화 후 터미널에서 docker version 명령어를 사용해 사용가능한 상태 및 버전 확인 완료
-- 
 ## 3) Dockerfile 작업
-
+- 현재 디렉토리 안에 하위 디렉토리 생성 : mkdir src
+- 웹서버용 파일 생성 : echo '<h1>Hello Wolrd</h1>' > src/index.html
+- Dockerfile 만들기 : 
+echo "FROM nginx:latest" > Dockerfile (첫줄은 반드시 각진 괄고 1개. Dockerfile에 괄호 왼쪽 내용을 넣는다는 뜻) 
+echo "COPY src/index.html /usr/share/nginx/html/index.html" >> Dockerfile 
+echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 의미. 1개면 덮어쓴다는 의미. 첫줄만 괄호 1개여야 한다) 
+- Dockerfile 에 내용이 제대로 들어갔는지 확인 : cat Dockerfile
+  * 결과 : FROM nginx:latest
+          COPY src/index.html /usr/share/nginx/html/index.html
+          EXPOSE 80
 ## 4) 포트 매핑
 ## 5) 바인드 마운트 및 볼륨 작업
 
