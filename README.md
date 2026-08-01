@@ -28,7 +28,8 @@ For github &amp; codyssey connecting
   /Users/sinai4867038/task01_webserver → 디렉토리 경로
 ### 2) docker 설치, 점검 및 컨테이너 실행/관리
 - docker 설치 : brew install docker
-- 권한 문제로 에러 발생 (https://github.com/Sinai-Cho/sinai_repository_01/issues/1#issue-5036160924)
+- 권한 문제로 설치 실패(https://github.com/Sinai-Cho/sinai_repository_01/issues/1#issue-5036160924)
+- 해결 방법 : 맥북 내 Orbstatk 앱 활성화 후 터미널에서 docker version 명령어를 사용해 사용가능한 상태 및 버전 확인 완료
 - 
 ## 3) Dockerfile 작업
 
