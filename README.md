@@ -33,10 +33,10 @@ For github &amp; codyssey connecting
 ### 3) Dockerfile 작업
 - 현재 디렉토리 안에 하위 디렉토리 생성 : mkdir src
 - 웹서버용 파일 생성 : echo "<h1>Hello Wolrd</h1>" > src/index.html
-- Dockerfile 만들기
-  echo "FROM nginx:latest" > Dockerfile (첫줄은 반드시 각진 괄고 1개. Dockerfile에 괄호 왼쪽 내용을 넣는다는 뜻) \
+- Dockerfile 만들기 : \
+  echo "FROM nginx:latest" > Dockerfile (첫줄은 반드시 각진 괄호 1개. Dockerfile에 괄호 왼쪽 내용을 넣는다는 뜻) \
   echo "COPY src/index.html /usr/share/nginx/html/index.html" >> Dockerfile \
-  echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 의미. 1개면 덮어쓴다는 의미. 첫줄만 괄호 1개여야 한다)\ 
+  echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 의미. 1개면 덮어쓴다는 의미. 첫줄만 괄호 1개여야 한다) 
 - Dockerfile 에 내용이 제대로 들어갔는지 확인 : cat Dockerfile
   * 결과
 
@@ -47,10 +47,47 @@ For github &amp; codyssey connecting
           EXPOSE 80
 ### 4) 포트 매핑 및 바인드 마운트 작업
 - docker build : docker build -t task01_server .
+- 결과 로그 : \
+  docker build -t task01_server .
+[+] Building 7.6s (7/7) FINISHED                                docker:orbstack
+ => [internal] load build definition from Dockerfile                       0.2s
+ => => transferring dockerfile: 118B                                       0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest            2.3s
+ => [internal] load .dockerignore                                          0.1s
+ => => transferring context: 2B                                            0.0s
+ => [internal] load build context                                          0.2s
+ => => transferring context: 89B                                           0.0s
+ => [1/2] FROM docker.io/library/nginx:latest@sha256:5a88c9c45479443d7be2  4.0s
+ => => resolve docker.io/library/nginx:latest@sha256:5a88c9c45479443d7be2  0.2s
+ => => sha256:5a88c9c45479443d7be2eadc894b4ed0a9801bae0 10.23kB / 10.23kB  0.0s
+ => => sha256:db4f612f385437d11eb26620a4f1d7efb3ff44e1296 2.29kB / 2.29kB  0.0s
+ => => sha256:062e450697faa5f02a3a74eba9864ee4d79bc9cfb 29.78MB / 29.78MB  0.6s
+ => => sha256:4e5db4761e0ff445f7fd29aad680ad28e8abf7d2048 9.09kB / 9.09kB  0.0s
+ => => sha256:3c7ab7949321f47c96fc0918f9f72e8f51bd452cdef1e0d 626B / 626B  0.6s
+ => => sha256:82454cdbf456a77f9ff1bb88b121c2a739e38c30e 33.33MB / 33.33MB  0.9s
+ => => extracting sha256:062e450697faa5f02a3a74eba9864ee4d79bc9cfbd65769f  1.1s
+ => => sha256:cacfcdd01f309c65d69372716e799ea741065ac1b1e6088 955B / 955B  0.9s
+ => => sha256:b6698f04e005497a7f495c0719358d43890cb3997ad7b4a 403B / 403B  0.9s
+ => => sha256:2bedaf25031a24fb70b9dc2d56cb17139186d1ae5fd 1.21kB / 1.21kB  1.1s
+ => => sha256:d26f27cc8c41e321394cb3c9a80915d90d5f1f1d3cb 1.40kB / 1.40kB  1.2s
+ => => extracting sha256:82454cdbf456a77f9ff1bb88b121c2a739e38c30ea689c13  0.7s
+ => => extracting sha256:3c7ab7949321f47c96fc0918f9f72e8f51bd452cdef1e0da  0.0s
+ => => extracting sha256:cacfcdd01f309c65d69372716e799ea741065ac1b1e60880  0.0s
+ => => extracting sha256:b6698f04e005497a7f495c0719358d43890cb3997ad7b4ab  0.0s
+ => => extracting sha256:2bedaf25031a24fb70b9dc2d56cb17139186d1ae5fd2054e  0.0s
+ => => extracting sha256:d26f27cc8c41e321394cb3c9a80915d90d5f1f1d3cbbbcda  0.0s
+ => [2/2] COPY src/index.html /usr/share/nginx/html/index.html             0.4s
+ => exporting to image                                                     0.2s
+ => => exporting layers                                                    0.1s
+ => => writing image sha256:66472bf49838d78b0e0f70d718f0ba5a3ae73a908c14b  0.0s
+ => => naming to docker.io/library/task01_server                           0.0s
 - docker 포트 매핑 및 바인드 마운트 작업 :\
   docker run -d -p 8080:80 --name con_number01 -v $(pwd)/src:/usr/share/nginx/html task01_server
   * 결과 : b60157574a96c77404dec2760cfa6302f0222ca864028d904572d9d92a3f0a53(https://github.com/Sinai-Cho/sinai_repository_01/issues/3#issue-5036423712)
   * -d는 뒤에서 작업하겠다는 의미, -p는 포트 매핑(맥북의 8080포트와 dockerfile에서 설정한 80포트를 연결), --name은 컨테이너 이름, -v는 src 디렉토리 내의 파일과 바인드마운팅 한다는 의미, task01_server 는 docker가 생성한 이미지 이름
+- 포트매핑 확인 : http://localhost:8080/ 접속\ 
+  (포트 매핑 화면 이미지 하단의 이미지처럼 index.html 파일이 화면에 보여진다)
+- 바인드마운트 확인 : 
 ### 5) 볼륨 작업
 
 ##3. Github 연동
