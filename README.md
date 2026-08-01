@@ -4,7 +4,7 @@ For github &amp; codyssey connecting
 ## 1. 실행환경
 - OS : macOS
 - Shell : zsh
-- Docker
+- Docker : 
 - Git : git version 2.53.0
   
 ##2. 수행 항목 체크리스트
