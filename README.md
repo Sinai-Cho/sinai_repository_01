@@ -39,7 +39,9 @@ echo "COPY src/index.html /usr/share/nginx/html/index.html" >> Dockerfile
 echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 의미. 1개면 덮어쓴다는 의미. 첫줄만 괄호 1개여야 한다) 
 - Dockerfile 에 내용이 제대로 들어갔는지 확인 : cat Dockerfile
   * 결과 : FROM nginx:latest
+ 
           COPY src/index.html /usr/share/nginx/html/index.html
+    
           EXPOSE 80
 ## 4) 포트 매핑
 ## 5) 바인드 마운트 및 볼륨 작업
