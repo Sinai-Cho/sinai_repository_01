@@ -32,7 +32,7 @@ For github &amp; codyssey connecting
 - 해결 방법 : 맥북 내 Orbstatk 앱 활성화 후 터미널에서 docker version 명령어를 사용해 사용가능한 상태 및 버전 확인 완료
 ## 3) Dockerfile 작업
 - 현재 디렉토리 안에 하위 디렉토리 생성 : mkdir src
-- 웹서버용 파일 생성 : echo '<h1>Hello Wolrd</h1>' > src/index.html
+- 웹서버용 파일 생성 : echo "<h1>Hello Wolrd</h1>" > src/index.html
 - Dockerfile 만들기
   
 echo "FROM nginx:latest" > Dockerfile (첫줄은 반드시 각진 괄고 1개. Dockerfile에 괄호 왼쪽 내용을 넣는다는 뜻) 
