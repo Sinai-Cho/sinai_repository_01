@@ -7,7 +7,7 @@ For github &amp; codyssey connecting
 - Docker : 28.5.2
 - Git : git version 2.53.0
   
-##2. 수행 항목 체크리스트
+## 2. 수행 항목 체크리스트
 - 하위 작업 중 문제가 발생했던 기록 포함 정리
 ## 1) 터미널로 작업 디렉토리와 권한 정리
 - 작업용 디렉토리 생성 : mkdir ~/task01_webserver
