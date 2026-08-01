@@ -10,7 +10,24 @@ For github &amp; codyssey connecting
 ##2. 수행 항목 체크리스트
 - 하위 작업 중 문제가 발생했던 기록 포함 정리
 ## 1) 터미널로 작업 디렉토리와 권한 정리
-- 
+- 작업용 디렉토리 생성 : mkdir ~/task01_webserver
+- 생상한 디렉토리로 이동 : cd ~/task01_webserver
+- 디렉토리 권한 정리 : chmod 755 ~/task01_webserver
+  (755 : 
+- 디렉토리의 권한 확인 : ls -ld ~/task01_webserver
+  (ls :    / ld : 
+- 권환 확인 결과 
+  drwxr-xr-x  3 sinai4867038  sinai4867038  96  8  1 16:41 /Users/sinai4867038/task01_webserver
+- 결과 설명
+  drwxr-xr-x → 권한 (d = 디렉토리, rwx = 읽기/쓰기/실행)
+  3 → 링크 수
+  sinai4867038 → 소유자
+  sinai4867038 → 그룹
+  96 → 디렉토리 크기(바이트 단위)
+  8  1 16:41 → 마지막 수정 시간 (8월 1일 116시 41분)
+  /Users/sinai4867038/task01_webserver → 디렉토리 경로
+
+- 디렉토리 내에 하위 디렉토리 생성 : mkdir src
 ## 2) docker 설치, 점검 및 컨테이너 실행/관리
 ## 3) Dockerfile 작업
 ## 4) 포트 매핑
