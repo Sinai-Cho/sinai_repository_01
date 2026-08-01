@@ -4,7 +4,7 @@ For github &amp; codyssey connecting
 ## 1. 실행환경
 - OS : macOS
 - Shell : zsh
-- Docker : 
+- Docker : 28.5.2
 - Git : git version 2.53.0
   
 ##2. 수행 항목 체크리스트
@@ -15,21 +15,23 @@ For github &amp; codyssey connecting
 - 디렉토리 권한 정리 : chmod 755 ~/task01_webserver
   (755 : 
 - 디렉토리의 권한 확인 : ls -ld ~/task01_webserver
-  (ls :    / ld : 
-- 권환 확인 결과 
-  drwxr-xr-x  3 sinai4867038  sinai4867038  96  8  1 16:41 /Users/sinai4867038/task01_webserver
-- 결과 설명
+  (ls -ld : 폴더 자체의 정보와 권한을 보여줌)
+- 권환 확인 결과와 설명
+  drwxr-xr-x  2 sinai4867038  sinai4867038  64  8  1 17:06 /Users/sinai4867038/task01_webserver
+  * 결과 설명 *
   drwxr-xr-x → 권한 (d = 디렉토리, rwx = 읽기/쓰기/실행)
-  3 → 링크 수
+  2 → 링크 수
   sinai4867038 → 소유자
   sinai4867038 → 그룹
-  96 → 디렉토리 크기(바이트 단위)
-  8  1 16:41 → 마지막 수정 시간 (8월 1일 116시 41분)
+  64 → 디렉토리 크기(바이트 단위)
+  8  1 15:06 → 마지막 수정 시간 (8월 1일 17시 06분)
   /Users/sinai4867038/task01_webserver → 디렉토리 경로
-
-- 디렉토리 내에 하위 디렉토리 생성 : mkdir src
 ## 2) docker 설치, 점검 및 컨테이너 실행/관리
+- docker 설치 : brew install docker
+- 권한 문제로 에러 발생 (https://github.com/Sinai-Cho/sinai_repository_01/issues/1#issue-5036160924)
+- 
 ## 3) Dockerfile 작업
+
 ## 4) 포트 매핑
 ## 5) 바인드 마운트 및 볼륨 작업
 
