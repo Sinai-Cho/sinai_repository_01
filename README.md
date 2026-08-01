@@ -33,12 +33,17 @@ For github &amp; codyssey connecting
 ## 3) Dockerfile 작업
 - 현재 디렉토리 안에 하위 디렉토리 생성 : mkdir src
 - 웹서버용 파일 생성 : echo '<h1>Hello Wolrd</h1>' > src/index.html
-- Dockerfile 만들기 : 
+- Dockerfile 만들기
+  
 echo "FROM nginx:latest" > Dockerfile (첫줄은 반드시 각진 괄고 1개. Dockerfile에 괄호 왼쪽 내용을 넣는다는 뜻) 
+
 echo "COPY src/index.html /usr/share/nginx/html/index.html" >> Dockerfile 
+
 echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 의미. 1개면 덮어쓴다는 의미. 첫줄만 괄호 1개여야 한다) 
 - Dockerfile 에 내용이 제대로 들어갔는지 확인 : cat Dockerfile
-  * 결과 : FROM nginx:latest
+  * 결과
+
+          FROM nginx:latest
  
           COPY src/index.html /usr/share/nginx/html/index.html
     
