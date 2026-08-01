@@ -34,12 +34,9 @@ For github &amp; codyssey connecting
 - 현재 디렉토리 안에 하위 디렉토리 생성 : mkdir src
 - 웹서버용 파일 생성 : echo "<h1>Hello Wolrd</h1>" > src/index.html
 - Dockerfile 만들기
-  
-echo "FROM nginx:latest" > Dockerfile (첫줄은 반드시 각진 괄고 1개. Dockerfile에 괄호 왼쪽 내용을 넣는다는 뜻) 
-
-echo "COPY src/index.html /usr/share/nginx/html/index.html" >> Dockerfile 
-
-echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 의미. 1개면 덮어쓴다는 의미. 첫줄만 괄호 1개여야 한다) 
+  echo "FROM nginx:latest" > Dockerfile (첫줄은 반드시 각진 괄고 1개. Dockerfile에 괄호 왼쪽 내용을 넣는다는 뜻) \
+  echo "COPY src/index.html /usr/share/nginx/html/index.html" >> Dockerfile \
+  echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 의미. 1개면 덮어쓴다는 의미. 첫줄만 괄호 1개여야 한다)\ 
 - Dockerfile 에 내용이 제대로 들어갔는지 확인 : cat Dockerfile
   * 결과
 
@@ -50,13 +47,10 @@ echo "EXPOSE 80" >> Dockerfile (괄호가 2개면 앞 내용에 이어쓴다는 
           EXPOSE 80
 ### 4) 포트 매핑 및 바인드 마운트 작업
 - docker build : docker build -t task01_server .
-- docker 포트 매핑 및 바인드 마운트 작업 :
-  docker run -d \
-  -p 8080:80 \
-  --name con_number01 \   
-  -v $(pwd)/src:/usr/share/nginx/html \
-  task01_server
+- docker 포트 매핑 및 바인드 마운트 작업 :\
+  docker run -d -p 8080:80 --name con_number01 -v $(pwd)/src:/usr/share/nginx/html task01_server
   * 결과 : b60157574a96c77404dec2760cfa6302f0222ca864028d904572d9d92a3f0a53(https://github.com/Sinai-Cho/sinai_repository_01/issues/3#issue-5036423712)
+  * -d는 뒤에서 작업하겠다는 의미, -p는 포트 매핑(맥북의 8080포트와 dockerfile에서 설정한 80포트를 연결), --name은 컨테이너 이름, -v는 src 디렉토리 내의 파일과 바인드마운팅 한다는 의미, task01_server 는 docker가 생성한 이미지 이름
 ### 5) 볼륨 작업
 
 ##3. Github 연동
