@@ -8,10 +8,6 @@ For github &amp; codyssey connecting
 - Git : git version 2.53.0
   
 ## 2. 수행 항목 체크리스트
-- 하위 작업 중 문제가 발생했던 기록 포함 정리
-- 6. 현재 위치 확인, 목록 확인, 이동, 생성, 복사, 이동/이름 변경, 삭제, 파일 내용 확인, 빈 파일 생성
-7. 권한 확인/변경하는 명령 수행 결과(변경 전 후 비교)
-8. 파일 1개, 디레ㅔㄱ토리 1개에 대한 권한 변경 실험 수행 기록 남길것
 ### 1) 터미널로 작업 디렉토리와 권한 정리 
 (https://github.com/Sinai-Cho/sinai_repository_01/issues/6#issue-5036660240)
 - 작업용 디렉토리 생성 : mkdir ~/task01_webserver
@@ -64,6 +60,9 @@ For github &amp; codyssey connecting
     
           EXPOSE 80
 ### 4) 포트 매핑 및 바인드 마운트 작업
+- 바인드 마운트 작업의 필요성 :
+
+
 - docker build : docker build -t task01_server . (https://github.com/Sinai-Cho/sinai_repository_01/issues/3#issue-5036423712)
 - 결과 로그 : \
   docker build -t task01_server .
@@ -107,30 +106,24 @@ For github &amp; codyssey connecting
 - 바인드마운트 확인 위해 index.html 파일 내용 변경 : echo '<h1>Goodbye World</h1>' >src/index.html 
 - 파일 변경 내용 확인 : cat src/index.html
 - 변경 내용 적용 확인 : http://localhost:8080/ 새로 고침 (https://github.com/Sinai-Cho/sinai_repository_01/issues/5#issue-5036520878)
+
+
+
+- 컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
+- 
 ### 5) 볼륨 작업
-
-##3. Github 연동
-
-4. 검증 방법 (어떤 명령으로 뭘 했는지 / 결과 위치 링크)
-5. 트러블슈팅 2건 이상(문제 - 뭔인 및 가설 - 확인 - 해결 )
-6. 현재 위치 확인, 목록 확인, 이동, 생성, 복사, 이동/이름 변경, 삭제, 파일 내용 확인, 빈 파일 생성
-7. 권한 확인/변경하는 명령 수행 결과(변경 전 후 비교)
-8. 파일 1개, 디레ㅔㄱ토리 1개에 대한 권한 변경 실험 수행 기록 남길것
-9. 도커 버전 확인 결과 기록(version) 과 결과
-10. 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
-11. dockerfile 기반 커스텀 이미지 제작
-- 어떤 베이스 사용해서(NGINX) 제작했는지
-- 내가 적용한 커스텀 포인트 각각의 목적(?!)
-- build/실행 명령/출력 결과 로그와 스크린샷
-1. 컨테이너 실행/중지/목록 확인( ps-a) 
-- hello world 실행 성공 기록
-- 우분투 컨테이너 실행, 내부 진입 후 간단 명령(ls 수행 결과 기록)
-- 컨테이너 종료/유지(attach/exec 의 차이) 관찰해서 정리
-
 - docker 볼륨 생성하고 컨테이너에 연결
 - 컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
 - 생성/연결/검증 명령+출력 결과를 기록한다.
-1. 웹ㅂ서버 소스코드(src/) ????
+### 6) 컨테이너 테스트
+1. 컨테이너 실행/중지/목록 확인( ps-a) 
+- 우분투 컨테이너 실행, 내부 진입 후 간단 명령(ls 수행 결과 기록)
+- 컨테이너 종료/유지(attach/exec 의 차이) 관찰해서 정리
+##3. Github 연동
+
+
+10. 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
+
 
 <git 설정 및 깃허브/vscode 연동 증거>
 
