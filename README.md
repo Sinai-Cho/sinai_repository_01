@@ -12,13 +12,13 @@ For github &amp; codyssey connecting
 ## 1) 터미널로 작업 디렉토리와 권한 정리
 - 작업용 디렉토리 생성 : mkdir ~/task01_webserver
 - 생상한 디렉토리로 이동 : cd ~/task01_webserver
-- 디렉토리 권한 정리 : chmod 755 ~/task01_webserver
-  (755 : 
-- 디렉토리의 권한 확인 : ls -ld ~/task01_webserver
+- 디렉토리 권한 정리 : chmod 755 ~/task01_webserver 
+  (755 : 소유자는 모든 권한, 다른 사람은 읽기/실행만 가능)
+- 디렉토리의 권한 확인 : ls -ld ~/task01_webserver 
   (ls -ld : 폴더 자체의 정보와 권한을 보여줌)
-- 권환 확인 결과와 설명
+- 권환 확인 결과와 설명 :  
   drwxr-xr-x  2 sinai4867038  sinai4867038  64  8  1 17:06 /Users/sinai4867038/task01_webserver
-  * 결과 설명 *
+  * 결과 설명 
   drwxr-xr-x → 권한 (d = 디렉토리, rwx = 읽기/쓰기/실행)
   2 → 링크 수
   sinai4867038 → 소유자
