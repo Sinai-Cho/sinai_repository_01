@@ -414,11 +414,7 @@ total 8
 - 실행 결과 :
 Hello World
 ### 6) 컨테이너 테스트
-1. 컨테이너 실행/중지/목록 확인( ps-a) 
-- 우분투 컨테이너 실행, 내부 진입 후 간단 명령(ls 수행 결과 기록)
-- 컨테이너 종료/유지(attach/exec 의 차이) 관찰해서 정리
-- sinai4867038@c6r1s1 task01_webserver % cd
-- 우분투 컨테이너 실행 : docker pull ubuntu
+- 우분투 컨테이너 생성 : docker pull ubuntu
 - 결과 :
 Using default tag: latest
 latest: Pulling from library/ubuntu
@@ -433,24 +429,26 @@ docker.io/library/ubuntu:latest
 - 결과 : 
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var\
 boot  etc  lib   media  opt  root  sbin  sys  usr\
-- 우분투 재시작 후 attach attach 명령어 사용 : docker start ubuntu_test -> docker attach ubuntu_test\
+- 우분투 재시작 후 attach 명령어 사용 : docker start ubuntu_test -> docker attach ubuntu_test
+- 결과 :
 root@4dbdc0e40fef:/# ls\
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var\
 boot  etc  lib   media  opt  root  sbin  sys  usr\
 root@4dbdc0e40fef:/# exit\
-exit\
+exit
 - attach 일 떄 컨테이너 상태 : docker ps\
 CONTAINER ID   IMAGE           COMMAND                   CREATED             STATUS             PORTS                                     NAMES
 80d426a6e000   task01_server   "/docker-entrypoint.…"   57 minutes ago      Up 57 minutes      0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
 35770127198d   task01_server   "/docker-entrypoint.…"   About an hour ago   Up About an hour   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
 
 - 우분투 종료 후 다시 우분투 시작 : docker start ubuntu_test
-- exec 명령어로 상태 확인 : docker exec -it ubuntu_test bash \
+- exec 명령어로 상태 확인 : docker exec -it ubuntu_test bash 
+- 결과 :
 root@4dbdc0e40fef:/# ls \
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr \
 root@4dbdc0e40fef:/# exit \
-exit \
+exit 
 - ps 명령어로 상태 확인 : docker ps\
 CONTAINER ID   IMAGE           COMMAND                   CREATED             STATUS             PORTS                                     NAMES
 4dbdc0e40fef   ubuntu          "/bin/bash"               27 minutes ago      Up 51 seconds                                                ubuntu_test
