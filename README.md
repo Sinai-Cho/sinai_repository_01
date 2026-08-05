@@ -65,8 +65,8 @@ For github &amp; codyssey connecting
     
           EXPOSE 80
 ### 4) 포트 매핑 및 바인드 마운트 작업
-- 바인드 마운트 작업의 필요성 :
-
+- 포트 매핑 : 컨테이너가 정상적으로 실행되고 웹페이지가 보이는지 확인하는 단계
+- 바인드 마운트 : 호스트의 파일을 컨테이너와 직접 공유하는 작업. 파일을 수정할 경우 바로 컨테이너에 반영되므로 개발 단계에서 확인 작업에 사용하면 좋음
 
 - docker build : docker build -t task01_server . (https://github.com/Sinai-Cho/sinai_repository_01/issues/3#issue-5036423712)
 - 결과 로그 : \
@@ -116,7 +116,7 @@ For github &amp; codyssey connecting
 
 - 컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
 - 
-### 5) 볼륨 작업
+### 5) 볼륨 작업 (volume : docker가 관리하는 저장공간)
 - docker 볼륨 생성 : docker volume create nginx-volume
 - 결과 예시 : nginx-volume.
 - 생성된 볼륨 확인 명령어 : docker volume ls
