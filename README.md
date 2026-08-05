@@ -128,6 +128,16 @@ For github &amp; codyssey connecting
 <git 설정 및 깃허브/vscode 연동 증거>
 
 1. 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
+- 실행 및 결과 로그
+sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho"
+sinai4867038@c6r1s2 ~ % git config --global user.email "sinai486@gmail.com"
+sinai4867038@c6r1s2 ~ % git config --global init..defaultBranch main
+sinai4867038@c6r1s2 ~ % git config --list
+credential.helper=osxkeychain
+init.defaultbranch=main
+user.name=Sinai Cho
+user.email=sinai486@gmail.com
+init..defaultbranch=main
 
 ( git donfig —list 명령어 결과 기록 / 연동 증거로 스크린샷 첨부)
 )
