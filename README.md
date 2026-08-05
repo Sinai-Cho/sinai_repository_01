@@ -24,11 +24,11 @@ For github &amp; codyssey connecting
 - 파일 이름 변경 : mv test02.txt test03.txt
 - 현재 위치 확인 : pwd
 - 디렉토리 내에서 목록 확인 : ls src/
-- 파일 권한 확인 : ls -l testo3.txt
+- 파일 권한 확인 : ls -l test03.txt
   * 결과 : -rw-r--r--  1 sinai4867038  sinai4867038  0  8  1 19:31 testo3.txt
-- 파일 권한 변경 : chmod 755 testo3.txt
+- 파일 권한 변경 : chmod 755 test03.txt
   * 결과 : -rwxr-xr-x  1 sinai4867038  sinai4867038  0  8  1 19:31 testo3.txt
-- 파일 삭제 : rm testo3.txt
+- 파일 삭제 : rm test03.txt
 - 디렉토리 권한 정리 : chmod 755 ~/task01_webserver 
   (755 : 소유자는 모든 권한, 다른 사람은 읽기/실행만 가능)
 - 디렉토리의 권한 확인 : ls -ld ~/task01_webserver 
