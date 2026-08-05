@@ -1,6 +1,11 @@
 # sinai_repository_01
 For github &amp; codyssey connecting
 ## 1st 과제 : 내 컴퓨터에 개발자용 '작업실' 꾸미기
+## 프로젝트 개요(과제 목표)
+- GitHub 연동을 통해 다른 사람과 작업 진행 상황을 공유할 수 있도록 한다.
+- docker를 사용하여 한 컴퓨터 내에서 각기 다른 환경에서 서비스 및 프로그램을 개발할 수 있는 지식을 갖춘다.
+- Dockerfile과 포트 매핑 및 바인드마운팅 기능을 사용해서 서비스 내용의 변경이 있거나 삭제되는 상황이 발생하더라도 변경된 내용의 즉각 반영 및 기존 서비스 안정적으로 제공할 수 있는 환경 구축에 대해 학습한다. 
+
 ## 1. 실행환경
 - OS : macOS
 - Shell : zsh
@@ -119,17 +124,9 @@ For github &amp; codyssey connecting
 1. 컨테이너 실행/중지/목록 확인( ps-a) 
 - 우분투 컨테이너 실행, 내부 진입 후 간단 명령(ls 수행 결과 기록)
 - 컨테이너 종료/유지(attach/exec 의 차이) 관찰해서 정리
-##3. Github 연동
-
-
-10. 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
-
-
-<git 설정 및 깃허브/vscode 연동 증거>
-
-1. 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
-- 실행 및 결과 로그
-sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho"
+### 7) Github 연동
+- 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
+- 실행 및 결과 로그와 스크린샷 (https://github.com/Sinai-Cho/sinai_repository_01/issues/7#issue-5068738275)sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho")
 sinai4867038@c6r1s2 ~ % git config --global user.email "sinai486@gmail.com"
 sinai4867038@c6r1s2 ~ % git config --global init..defaultBranch main
 sinai4867038@c6r1s2 ~ % git config --list
@@ -139,5 +136,18 @@ user.name=Sinai Cho
 user.email=sinai486@gmail.com
 init..defaultbranch=main
 
-( git donfig —list 명령어 결과 기록 / 연동 증거로 스크린샷 첨부)
-)
+10. 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
+
+
+<git 설정 및 깃허브/vscode 연동 증거>
+
+1. 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
+- 실행 및 결과 로그와 스크린샷 (https://github.com/Sinai-Cho/sinai_repository_01/issues/7#issue-5068738275)sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho")
+sinai4867038@c6r1s2 ~ % git config --global user.email "sinai486@gmail.com"
+sinai4867038@c6r1s2 ~ % git config --global init..defaultBranch main
+sinai4867038@c6r1s2 ~ % git config --list
+credential.helper=osxkeychain
+init.defaultbranch=main
+user.name=Sinai Cho
+user.email=sinai486@gmail.com
+init..defaultbranch=main
