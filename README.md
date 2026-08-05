@@ -448,7 +448,7 @@ root@4dbdc0e40fef:/# ls \
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr \
 root@4dbdc0e40fef:/# exit \
-exit 
+exit
 - ps 명령어로 상태 확인 : docker ps\
 CONTAINER ID   IMAGE           COMMAND                   CREATED             STATUS             PORTS                                     NAMES
 4dbdc0e40fef   ubuntu          "/bin/bash"               27 minutes ago      Up 51 seconds                                                ubuntu_test
