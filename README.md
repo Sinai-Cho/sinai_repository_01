@@ -187,7 +187,7 @@ Server:
  Server Version: 28.x.x
  Storage Driver: overlay2
  ...
-### 8) Git, viscode 연동
+### 8) Git, vscode 연동
 - 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
 - 실행 및 결과 로그와 스크린샷 (https://github.com/Sinai-Cho/sinai_repository_01/issues/7#issue-5068738275)\
 sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho")
