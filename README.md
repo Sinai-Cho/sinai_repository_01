@@ -559,8 +559,7 @@ Server:
 WARNING: DOCKER_INSECURE_NO_IPTABLES_RAW is set
 
 ### 8) Git, vscode 연동
-- 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
-- 실행 및 결과 로그와 스크린샷 (https://github.com/Sinai-Cho/sinai_repository_01/issues/7#issue-5068738275)\
+- 브랜치 설정 명령어 및 로그:
 sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho")
 sinai4867038@c6r1s2 ~ % git config --global user.email "sinai486@gmail.com"
 sinai4867038@c6r1s2 ~ % git config --global init..defaultBranch main
@@ -570,7 +569,6 @@ init.defaultbranch=main
 user.name=Sinai Cho
 user.email=sinai486@gmail.com
 init..defaultbranch=main
-- viscose 연동
-- GitHub 저장소 연동
+- VSCODE / Github 연동 이미지 : 
 
 
