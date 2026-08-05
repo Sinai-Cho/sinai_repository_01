@@ -117,16 +117,80 @@ For github &amp; codyssey connecting
 - 컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
 - 
 ### 5) 볼륨 작업
-- docker 볼륨 생성하고 컨테이너에 연결
-- 컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
-- 생성/연결/검증 명령+출력 결과를 기록한다.
-### 6) 컨테이너 테스트
+- docker 볼륨 생성 : docker volume create nginx-volume
+- 결과 예시 : nginx-volume.
+- 생성된 볼륨 확인 명령어 : docker volume ls
+- 결과 예시 :
+DRIVER    VOLUME NAME
+local     nginx-volume
+- 볼륨 정보 확인 명령어 :docker volume inspect nginx-volume
+- 결과 예시 : JSON
+[
+  {
+    "CreatedAt": "2026-08-05T16:30:00Z",
+    "Driver": "local",
+    "Mountpoint": "/var/lib/docker/volumes/nginx-volume/_data",
+    "Name": "nginx-volume",
+    "Scope": "local"
+  }
+
+]
+- 볼륨 연결하여 컨테이너 실행 명령어 : 
+docker run -d \
+--name nginx-volume-test \
+-p 8080:80 \
+-v nginx-volume:/usr/share/nginx/html \
+nginx
+- 실행 결과 예시 : 
+4a8db01f39f7e74d4d......
+- 연결 확인 명령어 : docker inspect nginx-volume-test
+- 실형 결과 예시 :
+JSON
+"Mounts": [
+  {
+      "Type": "volume",
+      "Name": "nginx-volume",
+      "Destination": "/usr/share/nginx/html"
+  }
+]
+- 컨테이너 내부 확인 명령어 : docker exec -it nginx-volume-test bash => ls /usr/share/nginx/html
+- 실행 결과 예시 :
+index.html
+50x.html
+- 볼륨 검증(컨테이너 내부) 명령어 : echo "Volume Test" > /usr/share/nginx/html/test.txt
+- 그 후 종료 하기 : exit
+- 컨테이너 삭제 : docker rm -f nginx-volume-test
+- 새 컨테이너 같은 볼륨으ㅜ로 다시 실행 명령어 :
+docker run -d \
+--name nginx-volume-test2 \
+-p 8080:80 \
+-v nginx-volume:/usr/share/nginx/html \
+nginx
+- 확인 작업 : docker exec -it nginx-volume-test2 sh  => ls /usr/share/nginx/html
+- 실행 결과 예시 :
+index.html
+50x.html
+test.txt### 6) 컨테이너 테스트
 1. 컨테이너 실행/중지/목록 확인( ps-a) 
 - 우분투 컨테이너 실행, 내부 진입 후 간단 명령(ls 수행 결과 기록)
 - 컨테이너 종료/유지(attach/exec 의 차이) 관찰해서 정리
-### 7) Github 연동
+### 7). 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
+- 명령여 : docker info
+- 결과 : docker 정보가 나와야 하고 특히 server 정보가 보이면 docker 데몬이 정상 실행중인 상태란 것을 의미함
+Client:
+ Context:    desktop-linux
+
+Server:
+ Containers: 3
+ Running: 1
+ Images: 5
+ Server Version: 28.x.x
+ Storage Driver: overlay2
+ ...
+### 8) Git, viscode 연동
 - 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
-- 실행 및 결과 로그와 스크린샷 (https://github.com/Sinai-Cho/sinai_repository_01/issues/7#issue-5068738275)sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho")
+- 실행 및 결과 로그와 스크린샷 (https://github.com/Sinai-Cho/sinai_repository_01/issues/7#issue-5068738275)\
+sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho")
 sinai4867038@c6r1s2 ~ % git config --global user.email "sinai486@gmail.com"
 sinai4867038@c6r1s2 ~ % git config --global init..defaultBranch main
 sinai4867038@c6r1s2 ~ % git config --list
@@ -135,19 +199,7 @@ init.defaultbranch=main
 user.name=Sinai Cho
 user.email=sinai486@gmail.com
 init..defaultbranch=main
+- viscose 연동
+- GitHub 저장소 연동
 
-10. 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
 
-
-<git 설정 및 깃허브/vscode 연동 증거>
-
-1. 기본 브랜치설정 후 vscode에서 깃허브 로그인 및 저장소 연동 완료
-- 실행 및 결과 로그와 스크린샷 (https://github.com/Sinai-Cho/sinai_repository_01/issues/7#issue-5068738275)sinai4867038@c6r1s2 ~ % git config --global user.name "Sinai Cho")
-sinai4867038@c6r1s2 ~ % git config --global user.email "sinai486@gmail.com"
-sinai4867038@c6r1s2 ~ % git config --global init..defaultBranch main
-sinai4867038@c6r1s2 ~ % git config --list
-credential.helper=osxkeychain
-init.defaultbranch=main
-user.name=Sinai Cho
-user.email=sinai486@gmail.com
-init..defaultbranch=main
