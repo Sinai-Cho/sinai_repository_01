@@ -431,29 +431,27 @@ docker.io/library/ubuntu:latest
 - 결과 : root@4dbdc0e40fef:
 - 컨테이너 내부 진입 후 목록 확인 : ls
 - 결과 : 
-bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
-boot  etc  lib   media  opt  root  sbin  sys  usr
-- 우분투 재시작 후 attach attach 명령어 사용 : docker start ubuntu_test -> docker attach ubuntu_test
-root@4dbdc0e40fef:/# ls
-bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
-boot  etc  lib   media  opt  root  sbin  sys  usr
-root@4dbdc0e40fef:/# exit
-exit
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var\
+boot  etc  lib   media  opt  root  sbin  sys  usr\
+- 우분투 재시작 후 attach attach 명령어 사용 : docker start ubuntu_test -> docker attach ubuntu_test\
+root@4dbdc0e40fef:/# ls\
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var\
+boot  etc  lib   media  opt  root  sbin  sys  usr\
+root@4dbdc0e40fef:/# exit\
+exit\
 - attach 일 떄 컨테이너 상태 : docker ps\
 CONTAINER ID   IMAGE           COMMAND                   CREATED             STATUS             PORTS                                     NAMES
 80d426a6e000   task01_server   "/docker-entrypoint.…"   57 minutes ago      Up 57 minutes      0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
 35770127198d   task01_server   "/docker-entrypoint.…"   About an hour ago   Up About an hour   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
 
 - 우분투 종료 후 다시 우분투 시작 : docker start ubuntu_test
-- exec 명령어로 상태 확인 : docker exec -it ubuntuP_test bash
-Error response from daemon: No such container: ubuntuP_test
-sinai4867038@c6r1s1 ~ % docker exec -it ubuntu_test bash
-root@4dbdc0e40fef:/# ls
+- exec 명령어로 상태 확인 : docker exec -it ubuntu_test bash \
+root@4dbdc0e40fef:/# ls \
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
-boot  etc  lib   media  opt  root  sbin  sys  usr
-root@4dbdc0e40fef:/# exit
-exit
-sinai4867038@c6r1s1 ~ % docker ps\
+boot  etc  lib   media  opt  root  sbin  sys  usr \
+root@4dbdc0e40fef:/# exit \
+exit \
+- ps 명령어로 상태 확인 : docker ps\
 CONTAINER ID   IMAGE           COMMAND                   CREATED             STATUS             PORTS                                     NAMES
 4dbdc0e40fef   ubuntu          "/bin/bash"               27 minutes ago      Up 51 seconds                                                ubuntu_test
 80d426a6e000   task01_server   "/docker-entrypoint.…"   59 minutes ago      Up 59 minutes      0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
