@@ -418,7 +418,8 @@ Hello World
 - 우분투 컨테이너 실행, 내부 진입 후 간단 명령(ls 수행 결과 기록)
 - 컨테이너 종료/유지(attach/exec 의 차이) 관찰해서 정리
 - sinai4867038@c6r1s1 task01_webserver % cd
-sinai4867038@c6r1s1 ~ % docker pull ubuntu
+- 우분투 컨테이너 실행 : docker pull ubuntu
+- 결과 :
 Using default tag: latest
 latest: Pulling from library/ubuntu
 617772c7d19b: Pull complete 
@@ -426,40 +427,25 @@ a7fb98a8eddd: Pull complete
 Digest: sha256:678c6550cc43645e08669028bc177f50be4e7c5b8cca677067b1914d4afc7a03
 Status: Downloaded newer image for ubuntu:latest
 docker.io/library/ubuntu:latest
-sinai4867038@c6r1s1 ~ % docker run -it --name ubuntu_test
-docker: 'docker run' requires at least 1 argument
-
-Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
-
-See 'docker run --help' for more information
-sinai4867038@c6r1s1 ~ % docker run -it --name ubuntu_test ubuntu
-root@4dbdc0e40fef:/# pwd
-/
+- 컨테이너 실행 : docker run -it --name ubuntu_test ubuntu
+- 결과 : root@4dbdc0e40fef:
+- 컨테이너 내부 진입 후 목록 확인 : ls
+- 결과 : 
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+- 우분투 재시작 후 attach attach 명령어 사용 : docker start ubuntu_test -> docker attach ubuntu_test
 root@4dbdc0e40fef:/# ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
 root@4dbdc0e40fef:/# exit
 exit
-sinai4867038@c6r1s1 ~ % docker ps
-CONTAINER ID   IMAGE           COMMAND                   CREATED          STATUS          PORTS                                     NAMES
-80d426a6e000   task01_server   "/docker-entrypoint.…"   32 minutes ago   Up 32 minutes   0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
-35770127198d   task01_server   "/docker-entrypoint.…"   55 minutes ago   Up 55 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
-sinai4867038@c6r1s1 ~ % docker ps -a
-CONTAINER ID   IMAGE           COMMAND                   CREATED              STATUS                      PORTS                                     NAMES
-4dbdc0e40fef   ubuntu          "/bin/bash"               About a minute ago   Exited (0) 31 seconds ago                                             ubuntu_test
-80d426a6e000   task01_server   "/docker-entrypoint.…"   32 minutes ago       Up 32 minutes               0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
-35770127198d   task01_server   "/docker-entrypoint.…"   55 minutes ago       Up 55 minutes               0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
-sinai4867038@c6r1s1 ~ % docker start ubuntu_test
-ubuntu_test
-sinai4867038@c6r1s1 ~ % docker attach ubuntu_test
-root@4dbdc0e40fef:/# ls
-bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
-boot  etc  lib   media  opt  root  sbin  sys  usr
-root@4dbdc0e40fef:/# exit
-exit
-sinai4867038@c6r1s1 ~ % docker start ubuntu_test
-ubuntu_test
-sinai4867038@c6r1s1 ~ % docker exec -it ubuntuP_test bash
+- attach 일 떄 컨테이너 상태 : docker ps
+CONTAINER ID   IMAGE           COMMAND                   CREATED             STATUS             PORTS                                     NAMES
+80d426a6e000   task01_server   "/docker-entrypoint.…"   57 minutes ago      Up 57 minutes      0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
+35770127198d   task01_server   "/docker-entrypoint.…"   About an hour ago   Up About an hour   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
+
+- 우분투 종료 후 다시 우분투 시작 : docker start ubuntu_test
+- exec 명령어로 상태 확인 : docker exec -it ubuntuP_test bash
 Error response from daemon: No such container: ubuntuP_test
 sinai4867038@c6r1s1 ~ % docker exec -it ubuntu_test bash
 root@4dbdc0e40fef:/# ls
@@ -468,16 +454,12 @@ boot  etc  lib   media  opt  root  sbin  sys  usr
 root@4dbdc0e40fef:/# exit
 exit
 sinai4867038@c6r1s1 ~ % docker ps
-CONTAINER ID   IMAGE           COMMAND                   CREATED          STATUS          PORTS                                     NAMES
-4dbdc0e40fef   ubuntu          "/bin/bash"               3 minutes ago    Up 54 seconds                                             ubuntu_test
-80d426a6e000   task01_server   "/docker-entrypoint.…"   35 minutes ago   Up 35 minutes   0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
-35770127198d   task01_server   "/docker-entrypoint.…"   58 minutes ago   Up 58 minutes   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
-sinai4867038@c6r1s1 ~ % docker ps -a
-CONTAINER ID   IMAGE           COMMAND                   CREATED          STATUS              PORTS                                     NAMES
-4dbdc0e40fef   ubuntu          "/bin/bash"               4 minutes ago    Up About a minute                                             ubuntu_test
-80d426a6e000   task01_server   "/docker-entrypoint.…"   36 minutes ago   Up 36 minutes       0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
-35770127198d   task01_server   "/docker-entrypoint.…"   58 minutes ago   Up 58 minutes       0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
-sinai4867038@c6r1s1 ~ % exit
+CONTAINER ID   IMAGE           COMMAND                   CREATED             STATUS             PORTS                                     NAMES
+4dbdc0e40fef   ubuntu          "/bin/bash"               27 minutes ago      Up 51 seconds                                                ubuntu_test
+80d426a6e000   task01_server   "/docker-entrypoint.…"   59 minutes ago      Up 59 minutes      0.0.0.0:8082->80/tcp, [::]:8082->80/tcp   con_number03
+35770127198d   task01_server   "/docker-entrypoint.…"   About an hour ago   Up About an hour   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   con_number01
+
+ * attach / exec 를 각각 사용했을 때 결과값이 다름. attach가 메인 프로세스가 종료되면 컨테이너도 함께 종료되는 것으로 보아 실행 중인 컨테이너의 메인 프로세스에 직접 연결된다는 것을 알 수 있다. exec는 exit를 입력해도 생성한 쉘만 종료되고 컨테이너는 계속 실행되는 것으로 보아(시간에 second가 찍히면서 직전까지 실행되고 있음을 확인할 수 있다.) 실행 중인 컨테이너 내부에서 새로운 프로세스를 생성하여 명령을 실행한다는 것을 알 수 있다.
 
 ### 7). 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
 - 명령여 : docker info
