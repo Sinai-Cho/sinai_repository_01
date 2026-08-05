@@ -569,6 +569,6 @@ init.defaultbranch=main
 user.name=Sinai Cho
 user.email=sinai486@gmail.com
 init..defaultbranch=main
-- VSCODE / Github 연동 이미지 : 
+- VSCODE / Github 연동 이미지 : https://github.com/Sinai-Cho/sinai_repository_01/issues/13#issue-5071457214
 
 
