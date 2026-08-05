@@ -462,8 +462,8 @@ CONTAINER ID   IMAGE           COMMAND                   CREATED             STA
  * attach / exec 를 각각 사용했을 때 결과값이 다름. attach가 메인 프로세스가 종료되면 컨테이너도 함께 종료되는 것으로 보아 실행 중인 컨테이너의 메인 프로세스에 직접 연결된다는 것을 알 수 있다. exec는 exit를 입력해도 생성한 쉘만 종료되고 컨테이너는 계속 실행되는 것으로 보아(시간에 second가 찍히면서 직전까지 실행되고 있음을 확인할 수 있다.) 실행 중인 컨테이너 내부에서 새로운 프로세스를 생성하여 명령을 실행한다는 것을 알 수 있다. (이미지 : https://github.com/Sinai-Cho/sinai_repository_01/issues/12#issue-5071233406)
 
 ### 7). 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
-- 명령여 : docker info
-- 결과 :
+- 명령어 : docker info
+- 결과 : (이미지 : https://github.com/Sinai-Cho/sinai_repository_01/issues/11#issue-5071037587)
 sinai4867038@c6r1s1 ~ % docker info
 Client:
  Version:    28.5.2
