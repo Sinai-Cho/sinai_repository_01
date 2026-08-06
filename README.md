@@ -118,12 +118,12 @@ For github &amp; codyssey connecting
 - 
 ### 5) 볼륨 작업 (volume : docker가 관리하는 저장공간)
 - docker 볼륨 생성 : docker volume create con_01_volume
-- 결과 예시 : con_01_volume
-- 생성된 볼륨 확인 명령어 : docker volume ls
+- 생성 결과 : con_01_volume
+- 생성된 볼륨 리스트 확인 : docker volume ls
 - 실행 결과 :
-DRIVER    VOLUME NAME
+DRIVER    VOLUME NAME\
 local     con_01_volume
-- 볼륨 정보 확인 명령어 :docker volume inspect con_01_volume
+- 볼륨 상세 정보 확인 명령어 :docker volume inspect con_01_volume
 - 실행 결과 : 
 [
   {
@@ -137,11 +137,11 @@ local     con_01_volume
   }
 
 ]
-- 볼륨 연결하여 컨테이너 실행 명령어 : 
-docker run -d --name con_numver02 -p 8081:80 -v con_01_volume:/usr/share/nginx/html task01_server
+- 생성한 볼륨과 새로운 컨테이너 연결(새로운 포트로 포트매핑) : 
+docker run -d --name con_number02 -p 8081:80 -v con_01_volume:/usr/share/nginx/html task01_server
 - 실행 결과 :  
 72a676530fd07bf96135b7d661dc92c8c7b7206441b6b38e0771b6b22ea9959c
-- 연결 확인 명령어 : docker inspect con_numver02
+- 볼륨 연결한 컨테이너 상세 정보 : docker inspect con_number02
 - 실형 결과 :
 [
     {
@@ -171,7 +171,7 @@ docker run -d --name con_numver02 -p 8081:80 -v con_01_volume:/usr/share/nginx/h
         "HostnamePath": "/var/lib/docker/containers/72a676530fd07bf96135b7d661dc92c8c7b7206441b6b38e0771b6b22ea9959c/hostname",
         "HostsPath": "/var/lib/docker/containers/72a676530fd07bf96135b7d661dc92c8c7b7206441b6b38e0771b6b22ea9959c/hosts",
         "LogPath": "/var/lib/docker/containers/72a676530fd07bf96135b7d661dc92c8c7b7206441b6b38e0771b6b22ea9959c/72a676530fd07bf96135b7d661dc92c8c7b7206441b6b38e0771b6b22ea9959c-json.log",
-        "Name": "/con_numver02",
+        "Name": "/con_number02",
         "RestartCount": 0,
         "Driver": "overlay2",
         "Platform": "linux",
@@ -396,7 +396,8 @@ docker run -d --name con_numver02 -p 8081:80 -v con_01_volume:/usr/share/nginx/h
         }
     }
 ]
-- 컨테이너 내부 확인 : docker exec con_numver02 ls -l /usr/share/nginx/html
+- 컨테이너 내부 확인 : docker exec con_number02 ls -l /usr/share/nginx/html
+\(con_number02 컨테이너 안에 들어가서 /usr/share/nginx/html 폴더 안에 어떤 파일들이 있는지 상세 정보까지 보여줘)
 - 실행 결과 :
 total 8
 -rw-r--r-- 1 root root 497 Jul 15 16:03 50x.html
