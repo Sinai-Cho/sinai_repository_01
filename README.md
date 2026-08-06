@@ -120,11 +120,11 @@ For github &amp; codyssey connecting
 - docker 볼륨 생성 : docker volume create con_01_volume
 - 생성 결과 : con_01_volume
 - 생성된 볼륨 리스트 확인 : docker volume ls
-- 실행 결과 :
+- 실행 결과 :\
 DRIVER    VOLUME NAME\
 local     con_01_volume
 - 볼륨 상세 정보 확인 명령어 :docker volume inspect con_01_volume
-- 실행 결과 : 
+- 실행 결과 :\ 
 [
   {
      "CreatedAt": "2026-08-05T20:46:31+09:00",
@@ -135,14 +135,14 @@ local     con_01_volume
         "Options": null,
         "Scope": "local"
   }
-
 ]
 - 생성한 볼륨과 새로운 컨테이너 연결(새로운 포트로 포트매핑) : 
-docker run -d --name con_number02 -p 8081:80 -v con_01_volume:/usr/share/nginx/html task01_server
+docker run -d --name con_number02 -p 8081:80 -v con_01_volume:/usr/share/nginx/html task01_server\
+(task01_server 이미지를 이용해 con_number02라는 컨테이너를 생성하고, 그 컨테이너의 /usr/share/nginx/html 폴더를 con_01_volume 볼륨과 연결한다)\
 - 실행 결과 :  
 72a676530fd07bf96135b7d661dc92c8c7b7206441b6b38e0771b6b22ea9959c
 - 볼륨 연결한 컨테이너 상세 정보 : docker inspect con_number02
-- 실형 결과 :
+- 실행 결과 :\
 [
     {
         "Id": "72a676530fd07bf96135b7d661dc92c8c7b7206441b6b38e0771b6b22ea9959c",
