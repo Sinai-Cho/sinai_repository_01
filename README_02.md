@@ -63,31 +63,68 @@ drwxr-xr-x 2 sinai4867038 sinai4867038 64 8 1 17:06 /Users/sinai4867038/task01_w
 
 <img src="images/docker_build.png" width="800">
 
-- 결과 로그 : docker build -t task01_server . [+] Building 7.6s (7/7) FINISHED docker:orbstack => [internal] load build definition from Dockerfile 0.2s => => transferring dockerfile: 118B 0.0s => [internal] load metadata for docker.io/library/nginx:latest 2.3s => [internal] load .dockerignore 0.1s => => transferring context: 2B 0.0s => [internal] load build context 0.2s => => transferring context: 89B 0.0s => [1/2] FROM docker.io/library/nginx:latest@sha256:5a88c9c45479443d7be2 4.0s => => resolve docker.io/library/nginx:latest@sha256:5a88c9c45479443d7be2 0.2s => => sha256:5a88c9c45479443d7be2eadc894b4ed0a9801bae0 10.23kB / 10.23kB 0.0s => => sha256:db4f612f385437d11eb26620a4f1d7efb3ff44e1296 2.29kB / 2.29kB 0.0s => => sha256:062e450697faa5f02a3a74eba9864ee4d79bc9cfb 29.78MB / 29.78MB 0.6s => => sha256:4e5db4761e0ff445f7fd29aad680ad28e8abf7d2048 9.09kB / 9.09kB 0.0s => => sha256:3c7ab7949321f47c96fc0918f9f72e8f51bd452cdef1e0d 626B / 626B 0.6s => => sha256:82454cdbf456a77f9ff1bb88b121c2a739e38c30e 33.33MB / 33.33MB 0.9s => => extracting sha256:062e450697faa5f02a3a74eba9864ee4d79bc9cfbd65769f 1.1s => => sha256:cacfcdd01f309c65d69372716e799ea741065ac1b1e6088 955B / 955B 0.9s => => sha256:b6698f04e005497a7f495c0719358d43890cb3997ad7b4a 403B / 403B 0.9s => => sha256:2bedaf25031a24fb70b9dc2d56cb17139186d1ae5fd 1.21kB / 1.21kB 1.1s => => sha256:d26f27cc8c41e321394cb3c9a80915d90d5f1f1d3cb 1.40kB / 1.40kB 1.2s => => extracting sha256:82454cdbf456a77f9ff1bb88b121c2a739e38c30ea689c13 0.7s => => extracting sha256:3c7ab7949321f47c96fc0918f9f72e8f51bd452cdef1e0da 0.0s => => extracting sha256:cacfcdd01f309c65d69372716e799ea741065ac1b1e60880 0.0s => => extracting sha256:b6698f04e005497a7f495c0719358d43890cb3997ad7b4ab 0.0s => => extracting sha256:2bedaf25031a24fb70b9dc2d56cb17139186d1ae5fd2054e 0.0s => => extracting sha256:d26f27cc8c41e321394cb3c9a80915d90d5f1f1d3cbbbcda 0.0s => [2/2] COPY src/index.html /usr/share/nginx/html/index.html 0.4s => exporting to image 0.2s => => exporting layers 0.1s => => writing image sha256:66472bf49838d78b0e0f70d718f0ba5a3ae73a908c14b 0.0s => => naming to docker.io/library/task01_server 0.0s
 - docker 포트 매핑 및 바인드 마운트 작업 :
 docker run -d -p 8080:80 --name con_number01 -v $(pwd)/src:/usr/share/nginx/html task01_server
-- 결과 : b60157574a96c77404dec2760cfa6302f0222ca864028d904572d9d92a3f0a53(
+- 결과 : b60157574a96c77404dec2760cfa6302f0222ca864028d904572d9d92a3f0a53
 - d는 뒤에서 작업하겠다는 의미, p는 포트 매핑(맥북의 8080포트와 dockerfile에서 설정한 80포트를 연결), name은 컨테이너 이름, v는 src 디렉토리 내의 파일과 바인드마운팅 한다는 의미, task01_server 는 docker가 생성한 이미지 이름
-- 포트매핑 확인 : http://localhost:8080/ 접속 
+- 포트 매핑 확인 : http://localhost:8080/ 접속 
 
 ### **< 비어있던 컨테이너에 이름을 부여한 컨테이너 생성 확인 >**
 <img src="images/port-mapping02.png" width="800">
 
-### **< 비포트매핑 확인을 위한 로컬호스트 8080 웹주소 이미지 >**
+### **< 포트 매핑 확인을 위한 로컬호스트 8080 웹주소 이미지 >**
 <img src="images/port-mapping01.png" width="800">
 
-- 바인드마운트 확인 위해 index.html 파일 내용 변경 : echo '
+- 바인드마운트 확인 위해 index.html 파일 내용 변경 : 
+### echo 'Goodbye World' >src/index.html
+- 파일 변경 내용 확인 : cat src/index.html
+- 변경 내용 적용 확인 : http://localhost:8080/ 새로 고침 
 
-Goodbye World
-' >src/index.html
-파일 변경 내용 확인 : cat src/index.html
+### **< index.html 수정 >**
+<img src="images/bind-mount01.png" width="800">
 
-변경 내용 적용 확인 : http://localhost:8080/ 새로 고침 (#5 (comment))
+### **< 로컬호스트 8080 새로 고침 결과 화면 >**
+<img src="images/bind-mount02.png" width="800">
 
-컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
+- 컨테이너 삭제 전후로 데이터 확인해서 데이터 유지됨 확인
 
+## 5) 볼륨 작업(volume : docker가 관리하는 저장공간)
+- docker 볼륨 생성 : docker volume create con_01_volume
+- 생성 결과 : con_01_volume
+- 생성된 볼륨 리스트 확인 : docker volume ls
+- 실행 결과 :
+### DRIVER VOLUME NAME
+### local con_01_volume
+- 볼륨 상세 정보 확인 명령어 :docker volume inspect con_01_volume
+- 실행 결과 :\ [ { "CreatedAt": "2026-08-05T20:46:31+09:00", "Driver": "local", "Labels": null, "Mountpoint": "/var/lib/docker/volumes/con_01_volume/_data", "Name": "con_01_volume", "Options": null, "Scope": "local" } ]
+- 생성한 볼륨과 새로운 컨테이너 연결(새로운 포트로 포트매핑) : docker run -d --name con_number02 -p 8081:80 -v con_01_volume:/usr/share/nginx/html task01_server
+(task01_server 이미지를 이용해 con_number02라는 컨테이너를 생성하고, 그 컨테이너의 /usr/share/nginx/html 폴더를 con_01_volume 볼륨과 연결한다)
+- 볼륨 연결한 컨테이너 상세 정보 : docker inspect con_number
+- 컨테이너 내부 확인 : docker exec con_number02 ls -l /usr/share/nginx/html (con_number02 컨테이너 안에 들어가서 /usr/share/nginx/html 폴더 안에 어떤 파일들이 있는지 상세 정보까지 보여줘)
+- 실행 결과 : total 8 -rw-r--r-- 1 root root 497 Jul 15 16:03 50x.html -rw-r--r-- 1 root root 12 Aug 5 11:34 index.html
+- 컨테이너 삭제 : docker rm -f con_numver02
+- 새 컨테이너 생성 및 같은 볼륨 연결 : docker run -d --name con_number03 -p 8082:80 -v con_01_volume:/usr/share/mnginx/html task01_server
+- 새로 생성한 컨테이너 내부 확인 : docker exec con_number03 ls -l /usr/share/nginx/html
+- 새로 생성한 컨테이너 내부 파일 내용 확인 : docker exec con_number03 cat /usr/share/nginx/html/index.html
 
+## 6) 컨테이너 테스트
+- 우분투 컨테이너 생성 : docker pull ubuntu
+- 결과 : Using default tag: latest latest: Pulling from library/ubuntu 617772c7d19b: Pull complete a7fb98a8eddd: Pull complete Digest: sha256:678c6550cc43645e08669028bc177f50be4e7c5b8cca677067b1914d4afc7a03 Status: Downloaded newer image for ubuntu:latest docker.io/library/ubuntu:latest
+- 컨테이너 실행 : docker run -it --name ubuntu_test ubuntu
+- 결과 : root@4dbdc0e40fef:
+- 컨테이너 내부 진입 후 목록 확인 : ls
+- 결과 : bin dev home lib64 mnt proc run srv tmp var
+boot etc lib media opt root sbin sys usr\
+- 우분투 재시작 후 attach 명령어 사용 : docker start ubuntu_test -> docker attach ubuntu_test
+- attach 일 떄 컨테이너 상태 : docker ps
+- 우분투 종료 후 다시 우분투 시작 : docker start ubuntu_test
+- exec 명령어로 상태 확인 : docker exec -it ubuntu_test bash
+- ps 명령어로 상태 확인 : docker ps
+- attach / exec 를 각각 사용했을 때 결과값이 다름. attach가 메인 프로세스가 종료되면 컨테이너도 함께 종료되는 것으로 보아 실행 중인 컨테이너의 메인 프로세스에 직접 연결된다는 것을 알 수 있다. exec는 exit를 입력해도 생성한 쉘만 종료되고 컨테이너는 계속 실행되는 것으로 보아(시간에 second가 찍히면서 직전까지 실행되고 있음을 확인할 수 있다.) 실행 중인 컨테이너 내부에서 새로운 프로세스를 생성하여 명령을 실행한다는 것을 알 수 있다. 
 
+<img src="images/attach_exec.png" width="800">
 
+## 7). 도커 데몬 동작 여부 확인 결과 기록(info) 과 결과
+- 명령어 : docker info
 
-<img src="images/commit_04 default quiz.png" width="800">
+<img src="images/docker_demon.png" width="800">
